@@ -21,5 +21,6 @@ data class WeatherForecast(
     val dayName: String,
     @CelsiusDegree val low: Int,
     @CelsiusDegree val high: Int,
-    @DrawableRes val icon: Int
+    @DrawableRes val icon: Int,
+    val weather: String
 )

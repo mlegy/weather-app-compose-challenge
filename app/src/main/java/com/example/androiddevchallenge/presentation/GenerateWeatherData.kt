@@ -34,19 +34,19 @@ internal object GenerateWeatherData {
     }
 
     fun getWeatherOfWeek() = listOf(
-        WeatherForecast("Mon, Mar 22", 2, 5, R.drawable.ic_cloudy),
-        WeatherForecast("Tue, Mar 23", 1, 3, R.drawable.ic_storm),
-        WeatherForecast("Wed, Mar 24", -1, 1, R.drawable.ic_snowy),
-        WeatherForecast("Thu, Mar 25", 3, 7, R.drawable.ic_rain),
-        WeatherForecast("Fri, Mar 26", 5, 9, R.drawable.ic_cloudy),
-        WeatherForecast("Sat, Mar 27", 6, 11, R.drawable.ic_sun),
-        WeatherForecast("Sun, Mar 28", 4, 7, R.drawable.ic_rain),
+        WeatherForecast("Mon, Mar 22", 2, 5, R.drawable.ic_cloudy, "Cloudy"),
+        WeatherForecast("Tue, Mar 23", 1, 3, R.drawable.ic_storm, "Storm"),
+        WeatherForecast("Wed, Mar 24", -1, 1, R.drawable.ic_snowy, "Snowy"),
+        WeatherForecast("Thu, Mar 25", 3, 7, R.drawable.ic_rain, "Rainy"),
+        WeatherForecast("Fri, Mar 26", 5, 9, R.drawable.ic_cloudy, "Cloudy"),
+        WeatherForecast("Sat, Mar 27", 6, 11, R.drawable.ic_sun, "Sunny"),
+        WeatherForecast("Sun, Mar 28", 4, 7, R.drawable.ic_rain, "Rainy"),
     )
 
     private val WARMER = CurrentWeather(
         "Berlin",
         2,
-        12
+        12,
     )
 
     private val COOLER = CurrentWeather(

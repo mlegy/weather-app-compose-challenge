@@ -47,16 +47,15 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieAnimationSpec
 import com.airbnb.lottie.compose.rememberLottieAnimationState
-import com.example.androiddevchallenge.presentation.String
+import com.example.androiddevchallenge.presentation.*
 import com.example.androiddevchallenge.presentation.WeatherViewModel
-import com.example.androiddevchallenge.presentation.toBackgroundColor
-import com.example.androiddevchallenge.presentation.toHint
-import com.example.androiddevchallenge.presentation.toIcon
 import com.example.androiddevchallenge.ui.theme.MyTheme
 import com.example.androiddevchallenge.ui.theme.shapes
 import kotlin.math.abs
@@ -83,8 +82,16 @@ class MainActivity : AppCompatActivity() {
 internal fun MyApp(viewModel: WeatherViewModel) {
     val currentWeatherState by viewModel.currentWeather.observeAsState()
     currentWeatherState?.let { currentWeather ->
-        Surface(color = currentWeather.weather.toBackgroundColor()) {
-            Box(modifier = Modifier.fillMaxSize()) {
+        Surface(
+            color = currentWeather.weather.toBackgroundColor()
+        ) {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .semantics(mergeDescendants = true) {
+                        contentDescription = currentWeather.contentDescription
+                    }
+            ) {
                 Column(modifier = Modifier.fillMaxSize()) {
                     Text(
                         text = currentWeather.location,
@@ -114,9 +121,9 @@ internal fun MyApp(viewModel: WeatherViewModel) {
                         style = MaterialTheme.typography.h3,
                     )
                 }
-                WeekView(viewModel = viewModel)
             }
         }
+        WeekView(viewModel = viewModel)
     }
 }
 
@@ -133,12 +140,17 @@ internal fun WeekView(viewModel: WeatherViewModel) {
             contentAlignment = Alignment.BottomCenter
         ) {
             LazyRow(
-                modifier = Modifier.padding(8.dp),
+                modifier = Modifier
+                    .padding(8.dp)
+                    .semantics(mergeDescendants = true) {
+                        contentDescription = forecastData.contentDescription
+                    },
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.Bottom
             ) {
                 items(forecastData) { data ->
                     Card(
+                        backgroundColor = Color.White,
                         modifier = Modifier
                             .size(150.dp, 150.dp)
                             .padding(horizontal = 4.dp),
@@ -160,7 +172,7 @@ internal fun WeekView(viewModel: WeatherViewModel) {
                             )
                             Image(
                                 painter = painterResource(data.icon),
-                                contentDescription = null,
+                                contentDescription = data.weather,
                                 modifier = Modifier.size(50.dp)
                             )
                         }
@@ -172,12 +184,8 @@ internal fun WeekView(viewModel: WeatherViewModel) {
 }
 
 @Composable
-fun ChangeInDegrees(value: Int) {
-    val (message, icon) = when {
-        value < 0 -> "${abs(value).String()} COLDER than yesterday" to R.drawable.ic_arrow_down
-        value > 0 -> "${value.String()} WARMER than yesterday" to R.drawable.ic_arrow_up
-        else -> "SAME as yesterday" to null
-    }
+fun ChangeInDegrees(@CelsiusDegree value: Int) {
+    val icon = value.changeInDegreesToIcon()
     Row(
         modifier = Modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
@@ -192,7 +200,7 @@ fun ChangeInDegrees(value: Int) {
             )
         }
         Text(
-            text = message,
+            text = value.changeInDegreesToString(),
             color = Color.White,
             style = MaterialTheme.typography.body1,
         )

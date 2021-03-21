@@ -17,6 +17,7 @@ package com.example.androiddevchallenge.presentation
 
 import androidx.compose.ui.graphics.Color
 import com.example.androiddevchallenge.R
+import kotlin.math.abs
 
 fun @receiver:CelsiusDegree Int.toBackgroundColor() = when {
     this < 0 -> Color(0xFF8F8F8F)
@@ -37,3 +38,21 @@ fun @receiver:CelsiusDegree Int.toHint() = when {
 }
 
 fun @receiver:CelsiusDegree Int.String() = "$this°"
+
+fun @receiver:CelsiusDegree Int.changeInDegreesToString() = when {
+    this < 0 -> "${abs(this).String()} COLDER than yesterday"
+    this > 0 -> "${this.String()} WARMER than yesterday"
+    else -> "SAME as yesterday"
+}
+
+fun @receiver:CelsiusDegree Int.changeInDegreesToIcon() = when {
+    this < 0 -> R.drawable.ic_arrow_down
+    this > 0 -> R.drawable.ic_arrow_up
+    else -> null
+}
+
+val CurrentWeather.contentDescription
+    get() = "Weather in $location now is $weather celsius degrees. Which is ${changeInDegrees.changeInDegreesToString()}"
+
+val List<WeatherForecast>.contentDescription
+    get() = joinToString(separator = "and ") { "Weather on ${it.dayName} is ${it.weather}" }
