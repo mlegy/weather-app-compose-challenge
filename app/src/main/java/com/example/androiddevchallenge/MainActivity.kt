@@ -99,38 +99,58 @@ internal fun MyApp(viewModel: WeatherViewModel) {
                     }
             ) {
                 Column(modifier = Modifier.fillMaxSize()) {
-                    Text(
-                        text = currentWeather.location,
-                        style = MaterialTheme.typography.h2,
-                        modifier = Modifier.padding(top = 48.dp, start = 32.dp, end = 32.dp)
-                    )
-                    Text(
-                        text = "${currentWeather.weather.String()}C",
-                        style = MaterialTheme.typography.h4,
-                        modifier = Modifier.padding(horizontal = 32.dp, vertical = 4.dp)
-                    )
-                    val animationSpec = LottieAnimationSpec.RawRes(currentWeather.weather.toIcon())
-                    val animationState = rememberLottieAnimationState(
-                        autoPlay = true,
-                        repeatCount = Integer.MAX_VALUE
-                    )
-                    LottieAnimation(
-                        spec = animationSpec,
-                        modifier = Modifier.requiredSize(300.dp),
-                        animationState = animationState
-                    )
+                    Location(currentWeather.location)
+                    CurrentWeather(currentWeather.weather)
+                    WeatherAnimatedIcon(currentWeather.weather)
                     ChangeInDegrees(value = currentWeather.changeInDegrees)
-                    Text(
-                        modifier = Modifier.fillMaxWidth(),
-                        text = currentWeather.weather.toHint(),
-                        textAlign = TextAlign.Center,
-                        style = MaterialTheme.typography.h3,
-                    )
+                    WeatherHint(currentWeather.weather)
                 }
             }
         }
         WeekView(viewModel = viewModel)
     }
+}
+
+@Composable
+fun Location(location: String) {
+    Text(
+        text = location,
+        style = MaterialTheme.typography.h2,
+        modifier = Modifier.padding(top = 48.dp, start = 32.dp, end = 32.dp)
+    )
+}
+
+@Composable
+fun CurrentWeather(@CelsiusDegree weather: Int) {
+    Text(
+        text = "${weather.String()}C",
+        style = MaterialTheme.typography.h4,
+        modifier = Modifier.padding(horizontal = 32.dp, vertical = 4.dp)
+    )
+}
+
+@Composable
+fun WeatherAnimatedIcon(@CelsiusDegree weather: Int) {
+    val animationSpec = LottieAnimationSpec.RawRes(weather.toIcon())
+    val animationState = rememberLottieAnimationState(
+        autoPlay = true,
+        repeatCount = Integer.MAX_VALUE
+    )
+    LottieAnimation(
+        spec = animationSpec,
+        modifier = Modifier.requiredSize(300.dp),
+        animationState = animationState
+    )
+}
+
+@Composable
+fun WeatherHint(@CelsiusDegree weather: Int) {
+    Text(
+        modifier = Modifier.fillMaxWidth(),
+        text = weather.toHint(),
+        textAlign = TextAlign.Center,
+        style = MaterialTheme.typography.h3,
+    )
 }
 
 @Composable
