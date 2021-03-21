@@ -16,28 +16,52 @@
 package com.example.androiddevchallenge.ui.theme
 
 import androidx.compose.material.Typography
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import com.example.androiddevchallenge.R
 
-// Set of Material typography styles to start with
+val poppins: FontFamily = FontFamily(
+    Font(R.font.poppins_medium, weight = FontWeight.Medium, style = FontStyle.Normal),
+    Font(R.font.poppins_light, weight = FontWeight.Light, style = FontStyle.Normal),
+    Font(R.font.poppins_bold, weight = FontWeight.Bold, style = FontStyle.Normal),
+)
+
+val openSansCondensed: FontFamily = FontFamily(
+    Font(R.font.open_sans_condensed_bold, weight = FontWeight.Bold, style = FontStyle.Normal),
+)
 val typography = Typography(
-    body1 = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
-        fontSize = 16.sp
-    )
-        /* Other default text styles to override
-    button = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.W500,
-        fontSize = 14.sp
+    h1 = TextStyle(
+        fontFamily = poppins,
+        fontWeight = FontWeight.Bold,
+        fontSize = 96.sp,
+        color = Color.White
     ),
-    caption = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
-        fontSize = 12.sp
+    h2 = TextStyle(
+        fontFamily = poppins,
+        fontWeight = FontWeight.Bold,
+        fontSize = 32.sp,
+        color = Color.White
+    ),
+    h3 = TextStyle(
+        fontFamily = poppins,
+        fontWeight = FontWeight.Light,
+        fontSize = 19.sp,
+        color = Color.White
+    ),
+    h4 = TextStyle(
+        fontFamily = poppins,
+        fontWeight = FontWeight.Bold,
+        fontSize = 28.sp,
+        color = Color.White
+    ),
+    body1 = TextStyle(
+        fontFamily = openSansCondensed,
+        fontWeight = FontWeight.Bold,
+        fontSize = 24.sp
     )
-    */
 )
