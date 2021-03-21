@@ -21,19 +21,22 @@ import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredSize
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.*
+import androidx.compose.material.Card
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
@@ -49,11 +52,11 @@ import androidx.compose.ui.unit.dp
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieAnimationSpec
 import com.airbnb.lottie.compose.rememberLottieAnimationState
-import com.example.androiddevchallenge.presentation.toHint
 import com.example.androiddevchallenge.presentation.String
-import com.example.androiddevchallenge.presentation.toBackgroundColor
-import com.example.androiddevchallenge.presentation.toIcon
 import com.example.androiddevchallenge.presentation.WeatherViewModel
+import com.example.androiddevchallenge.presentation.toBackgroundColor
+import com.example.androiddevchallenge.presentation.toHint
+import com.example.androiddevchallenge.presentation.toIcon
 import com.example.androiddevchallenge.ui.theme.MyTheme
 import com.example.androiddevchallenge.ui.theme.shapes
 import kotlin.math.abs
@@ -117,7 +120,6 @@ internal fun MyApp(viewModel: WeatherViewModel) {
     }
 }
 
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
 internal fun WeekView(viewModel: WeatherViewModel) {
     val forecast by viewModel.weatherOfWeek.observeAsState()
