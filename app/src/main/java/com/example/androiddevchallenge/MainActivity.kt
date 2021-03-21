@@ -54,11 +54,17 @@ import androidx.compose.ui.unit.dp
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieAnimationSpec
 import com.airbnb.lottie.compose.rememberLottieAnimationState
-import com.example.androiddevchallenge.presentation.*
+import com.example.androiddevchallenge.presentation.CelsiusDegree
+import com.example.androiddevchallenge.presentation.String
 import com.example.androiddevchallenge.presentation.WeatherViewModel
+import com.example.androiddevchallenge.presentation.changeInDegreesToIcon
+import com.example.androiddevchallenge.presentation.changeInDegreesToString
+import com.example.androiddevchallenge.presentation.contentDescription
+import com.example.androiddevchallenge.presentation.toBackgroundColor
+import com.example.androiddevchallenge.presentation.toHint
+import com.example.androiddevchallenge.presentation.toIcon
 import com.example.androiddevchallenge.ui.theme.MyTheme
 import com.example.androiddevchallenge.ui.theme.shapes
-import kotlin.math.abs
 
 class MainActivity : AppCompatActivity() {
 
