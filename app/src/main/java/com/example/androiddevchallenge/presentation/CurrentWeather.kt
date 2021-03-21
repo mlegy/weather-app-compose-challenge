@@ -16,7 +16,7 @@
 package com.example.androiddevchallenge.presentation
 
 data class CurrentWeather(
-    val location: Location,
+    val location: String,
     val changeInDegrees: Int,
     @CelsiusDegree val weather: Int,
 )

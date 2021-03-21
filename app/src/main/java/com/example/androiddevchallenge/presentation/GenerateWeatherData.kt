@@ -44,25 +44,25 @@ internal object GenerateWeatherData {
     )
 
     private val WARMER = CurrentWeather(
-        Location("Berlin", "Germany"),
+        "Berlin",
         2,
         12
     )
 
     private val COOLER = CurrentWeather(
-        Location("Berlin", "Germany"),
+        "Berlin",
         -6,
         6
     )
 
     private val SAME = CurrentWeather(
-        Location("Berlin", "Germany"),
+        "Berlin",
         0,
         6
     )
 
     private val COLDER_2 = CurrentWeather(
-        Location("Berlin", "Germany"),
+        "Berlin",
         -9,
         -3
     )

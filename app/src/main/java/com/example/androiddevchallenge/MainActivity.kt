@@ -21,7 +21,16 @@ import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.requiredSize
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
@@ -40,7 +49,10 @@ import androidx.compose.ui.unit.dp
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieAnimationSpec
 import com.airbnb.lottie.compose.rememberLottieAnimationState
-import com.example.androiddevchallenge.presentation.*
+import com.example.androiddevchallenge.presentation.toHint
+import com.example.androiddevchallenge.presentation.String
+import com.example.androiddevchallenge.presentation.toBackgroundColor
+import com.example.androiddevchallenge.presentation.toIcon
 import com.example.androiddevchallenge.presentation.WeatherViewModel
 import com.example.androiddevchallenge.ui.theme.MyTheme
 import com.example.androiddevchallenge.ui.theme.shapes
@@ -72,7 +84,7 @@ internal fun MyApp(viewModel: WeatherViewModel) {
             Box(modifier = Modifier.fillMaxSize()) {
                 Column(modifier = Modifier.fillMaxSize()) {
                     Text(
-                        text = currentWeather.location.city,
+                        text = currentWeather.location,
                         style = MaterialTheme.typography.h2,
                         modifier = Modifier.padding(top = 48.dp, start = 32.dp, end = 32.dp)
                     )
