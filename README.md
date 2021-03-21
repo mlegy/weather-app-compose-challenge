@@ -4,7 +4,7 @@
 
 
 ## :scroll: Description
-Weather App is a new way to look at the weather. It shows how is the weather today compared yesterday.<br />Is it colder by 2 degrees? Is it warmer by 3 degrees or is it the same as yesterday?
+Weather App is a new way to look at the weather. It shows how is the weather today compared to yesterday.<br />Is it colder by 2 degrees? Is it warmer by 3 degrees or is it the same as yesterday?
 
 ## :camera_flash: Screenshots
 <!-- You can add more screenshots here if you like -->
